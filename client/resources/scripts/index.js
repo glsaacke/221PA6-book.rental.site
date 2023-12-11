@@ -1,7 +1,6 @@
 function handleOnLoad() {
-    window.onload = function() {
         populateList();
-    };
+
 }
 
 
@@ -38,14 +37,14 @@ function handleNewClick(){
 }
 
 function handleRentClick(){
-    myBook.avlb--;
-    document.getElementById("bookAvlb").value = myBook.avlb;
+    myBook.numAvlb--;
+    document.getElementById("bookAvlb").value = myBook.numAvlb;
     putBook(myBook.id);
 }
 
 function handleReturnClick(){
-    myBook.avlb++;
-    document.getElementById("bookAvlb").value = myBook.avlb;
+    myBook.numAvlb++;
+    document.getElementById("bookAvlb").value = myBook.numAvlb;
     putBook(myBook.id);
 }
 
@@ -59,7 +58,7 @@ function handleCancelSave(){
     showButtons();
 }
 
-function handleEditSave(){
+function handleEditSave(id){
     putBook(id);
     makeReadOnly();
     showButtons();
@@ -79,7 +78,7 @@ function populateForm(){
     document.getElementById("bookTitle").value = myBook.title;
     document.getElementById("bookAuthor").value = myBook.author;
     document.getElementById("bookGenre").value = myBook.genre;
-    document.getElementById("bookAvlb").value = myBook.avlb;
+    document.getElementById("bookAvlb").value = myBook.numAvlb;
     document.getElementById("bookIsbn").value = myBook.isbn;
     document.getElementById("bookLength").value = myBook.length;
     document.getElementById("bookCover").value = myBook.cover;
@@ -133,3 +132,4 @@ function makeReadOnly(){
     document.getElementById("bookLength").readOnly=true;
     document.getElementById("bookCover").readOnly=true;
 }
+

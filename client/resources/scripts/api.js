@@ -4,7 +4,23 @@ const baseUrl = "https://pa6-backend.herokuapp.com/api/books/"+cwid;
 var bookList = [];
 var myBook = {};
 
+function populateList(){
+    const allBooksApiUrl = baseUrl;
+    fetch(allBooksApiUrl).then(function(response){
+        return response.json();
+    }).then(function(json){
+        bookList = json;
+        let html = "<select class = \"listBox\" onchange =\"handleOnChange()\" id= \"selectListBox\" name = \"list_box\" size=5 width=\"100%\">";
+        json.forEach((book)=>{
+            html += "<option value =" + book.id + ">" + book.title + "</option>";
 
+        })
+        html += "</select>";
+        document.getElementById("listBox").innerHTML = html;
+    }).catch(function(error){
+        console.log(error);
+    });
+}
 
 function putBook(id){
     const putBookApiUrl = baseUrl + "/"+id;
